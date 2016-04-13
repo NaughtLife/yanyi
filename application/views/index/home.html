@@ -1,0 +1,50 @@
+<?php $this->load->view('index/head.html') ?>
+<!-- NAVBAR
+================================================== -->
+  <body>
+    <div class="navbar-wrapper">
+      <div class="container">
+
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+          <div class="container">
+            <div class="navbar-header">
+              <a class="navbar-brand" href="#"><b>社康中心</b></a>
+            </div>
+          </div>
+        </nav>
+
+      </div>
+    </div>
+
+    <br><br><br><br>
+    <div class="container marketing">
+
+      <!-- Three columns of text below the carousel -->
+      <div class="row">
+        <?php $i = 0; ?>
+        <?php foreach ($community as $key => $value): ?>
+
+        <?php if ($i%2!=0): ?>
+          <div class="row">
+        <?php endif ?>
+        
+        <div class="col-xs-6">
+          <img class="img-thumbnail img-responsive center-block" src="http://yanyicommunity-yanyi.stor.sinaapp.com/<?php echo $value['photo'] ?>" alt="Generic placeholder image" height="140">
+          <h4 class="text-center"><?php echo $value['cname']; ?></h4>
+          <p  class="text-center">电话：<?php echo $value['mobile']; ?></p>
+          <p  class="text-center"><a class="btn btn-default" href="<?php echo site_url() . '/index/home/community?cid=' . $value['cid'] ?>" role="button">了解详情 &raquo;</a></p>
+        </div>
+
+        <?php if ($i%2!=0): ?>
+          </div>
+        <?php endif ?>
+        <?php $i++; ?>
+
+        <?php endforeach ?>
+      </div>
+
+
+    </div><!-- /.container -->
+<?php $this->load->view('index/footer.html') ?>
+
+

@@ -1,0 +1,62 @@
+<?php $this->load->view('index/head.html') ?>
+<!-- NAVBAR
+================================================== -->
+  <body>
+    <div class="navbar-wrapper">
+      <div class="container">
+
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+          <div class="container">
+            <div class="navbar-header">
+              <a class="navbar-brand" href="#"><?php echo $community[0]['cname']; ?></a>
+            </div>
+          </div>
+        </nav>
+
+      </div>
+    </div>
+
+    <br><br><br>
+    <div class="container marketing">
+
+      <!-- Three columns of text below the carousel -->
+      <div class="row">
+        <div class="col-xs-12">
+          <p><img class="img-thumbnail img-responsive center-block" src="http://yanyicommunity-yanyi.stor.sinaapp.com/<?php echo $community[0]['photo']; ?>" alt="Generic placeholder image" height="140"></p>
+          <p><span><b>联系电话：</b></span><?php echo $community[0]['mobile'] ?></p>
+          <p>
+          <span><b>社康介绍：</b></span>
+          <?php echo $community[0]['content'] ?>
+          </p>
+
+          <p><span><b>医护团队：</b></span></p>
+          <p>
+          <?php if (!$doctor): ?>
+            <p class="text-center">暂未录入资料！</p>
+          <?php endif ?>
+          <?php $i = 0; ?>
+          <?php foreach ($doctor as $key => $value): ?>
+            <?php if ($i%2!=0): ?>
+              <div class="row">
+            <?php endif ?>
+
+            <div class="col-xs-6">
+              <img class="img-thumbnail center-block" src="http://yanyicommunity-yanyi.stor.sinaapp.com/<?php echo $value['photo']; ?>" alt="Generic placeholder image" style="width:111px;height:145px;">
+              <h5 class="text-center"><?php echo $value['name'] ?></h5>
+              <p class="text-center"><a class="btn btn-gray" href="<?php echo site_url() . '/index/home/doctor?id=' . $value['id'] ?>" role="button">查看</a></p>
+            </div>
+
+            <?php if ($i%2!=0): ?>
+              </div>
+            <?php endif ?>
+            <?php $i++; ?>
+          <?php endforeach ?>
+        
+          </p>
+          <!-- <p  class="text-center"><a class="btn btn-default" href="#" role="button">了解详情 &raquo;</a></p> -->
+        </div><!-- /.col-lg-4 -->
+      </div>
+
+
+    </div><!-- /.container -->
+<?php $this->load->view('index/footer.html') ?>
